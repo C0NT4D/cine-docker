@@ -44,5 +44,5 @@ jobs:
             mkdir -p ~/deploy
             cd ~/deploy
             docker pull c0nt4d/holamundo:latest
-            docker compose pull
-            docker compose up -d
+            docker-compose pull
+            docker-compose up -d
