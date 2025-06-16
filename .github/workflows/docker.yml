@@ -24,3 +24,23 @@ jobs:
           context: ./php
           push: true
           tags: c0nt4d/holamundo:latest
+
+      - name: Transferir compose.yml al servidor remoto
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_KEY }}
+          source: ./compose.yml
+          target: ~/deploy/
+
+      - name: Desplegar con Docker Compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_KEY }}
+          script: |
+            cd ~/deploy
+            docker compose pull
+            docker compose up -d

@@ -1,9 +1,17 @@
+version: '3.8'  # Es buena práctica definir la versión
+
 services:
   db:
     build: ./mysql
     container_name: contenedorMiCine
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: contrasenyaRoot
+      MYSQL_DATABASE: cine
+      MYSQL_USER: usuario1
+      MYSQL_PASSWORD: contrasenyaUsuario1
+
   php:
     build: ./php
     container_name: contenedorMiApp
@@ -11,6 +19,7 @@ services:
       - "8080:80"
     depends_on:
       - db
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: contenedorPhpMyAdmin
