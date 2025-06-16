@@ -1,3 +1,4 @@
+
 <?php
 $host = 'db';
 $db = 'cine';
