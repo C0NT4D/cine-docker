@@ -1,8 +1,8 @@
-version: '3.8'  # Es buena práctica definir la versión
+version: '3.8'
 
 services:
   db:
-    build: ./mysql
+    image: mysql:8.0
     container_name: contenedorMiCine
     ports:
       - "3306:3306"
@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: contrasenyaUsuario1
 
   php:
-    build: ./php
+    image: c0nt4d/holamundo:latest
     container_name: contenedorMiApp
     ports:
       - "8080:80"

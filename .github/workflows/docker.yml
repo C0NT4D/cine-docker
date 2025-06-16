@@ -43,5 +43,6 @@ jobs:
           script: |
             mkdir -p ~/deploy
             cd ~/deploy
-            docker-compose pull
-            docker-compose up -d
+            docker pull c0nt4d/holamundo:latest
+            docker compose pull
+            docker compose up -d
